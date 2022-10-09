@@ -10,10 +10,10 @@ ARG LSDIR='/usr/local/lsws'
 COPY ./ /app
 RUN yum install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el7.noarch.rpm \
 	https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
-	epel-release -qy \
-	&& yum install curl openssl lsws mysql postgresql13 wget procps which initscripts -yq \
-  	&& yum install $PHP_VERSION $PHP_VERSION-common $PHP_VERSION-mysqlnd $PHP_VERSION-opcache $PHP_VERSION-soap $PHP_VERSION-sodium \
-    $PHP_VERSION-curl $PHP_VERSION-imagick $PHP_VERSION-redis $PHP_VERSION-memcached $PHP_VERSION-intl \
+	epel-release -q -y \
+	&& yum install --disablerepo=pgdg15 curl openssl lsws mysql postgresql13 wget procps which initscripts -yq
+RUN yum install --disablerepo=pgdg15 $PHP_VERSION $PHP_VERSION-common $PHP_VERSION-mysqlnd $PHP_VERSION-opcache $PHP_VERSION-soap $PHP_VERSION-sodium \
+    	$PHP_VERSION-curl $PHP_VERSION-imagick $PHP_VERSION-redis $PHP_VERSION-memcached $PHP_VERSION-intl \
 	$PHP_VERSION-json $PHP_VERSION-xml $PHP_VERSION-gd $PHP_VERSION-pgsql $PHP_VERSION-pdo  $PHP_VERSION-bcmath \
 	$PHP_VERSION-zip $PHP_VERSION-imap $PHP_VERSION-ioncube -y --nobest --skip-broken \
 	&& echo 'admin:$1$g4eM/m2X$ZZvEWHUtNfBKghPQr/05l0' > ${LSDIR}/admin/conf/htpasswd \
