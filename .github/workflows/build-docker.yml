@@ -3,12 +3,15 @@ name: Build LSWS Docker
 on:
   push:
     branches: [ "main" ]
+  
+env:
+      LSWS: 6.0.12
 
 jobs:
-  build:      
+  lsphp53:      
     runs-on: self-hosted
     env:
-      LSWS: 6.0.12
+        PHP: lsphp53
 
     steps:
     - name: Cleaning Operation
@@ -20,79 +23,199 @@ jobs:
     - name: docker login
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
 
-    - name: Build Docker image for ${LSWS} with lsphp53
-      env:
-        PHP: lsphp53
+    - name: Build Docker image
       run: |
         docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
-    
-    - name: Build Docker image for ${LSWS} with lsphp54    
-      env:
+
+  lsphp54:
+    runs-on: self-hosted
+    env:
         PHP: lsphp54
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+
+    - name: Build Docker image  
       run: |
-        docker build . --file --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
 
-    - name: Build Docker image for ${LSWS} with lsphp55    
-      env:
+  lsphp55:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp55
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+
+    - name: Build Docker image   
       run: |
-        docker build . --file --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
 
-    - name: Build Docker image for ${LSWS} with lsphp56
-      env:
+  lsphp56:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp56
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
-        docker build . --file --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
 
-    - name: Build Docker image for ${LSWS} with lsphp70
-      env:
+  lsphp70:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp70
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
-        docker build . --file --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
-    - name: Build Docker image for ${LSWS} with lsphp71
-      env:
+  lsphp71:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp71
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
-        docker build . --file --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
-    - name: Build Docker image for ${LSWS} with lsphp72
-      env:
+  lsphp72:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp72
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
         docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
-    - name: Build Docker image for ${LSWS} with lsphp73
-      env:
+  lsphp73:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp73
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
         docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
-    - name: Build Docker image for ${LSWS} with lsphp74
-      env:
+  lsphp74:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp74
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
         docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
-    - name: Build Docker image for ${LSWS} with lsphp80
-      env:
+  lsphp80:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp80
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
         docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
-    - name: Build Docker image for ${LSWS} with lsphp81
-      env:
+  lsphp81:      
+    runs-on: self-hosted
+    env:
         PHP: lsphp81
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+      
+    - name: checkout repo
+      uses: actions/checkout@v3
+    
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build Docker image
       run: |
         docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
