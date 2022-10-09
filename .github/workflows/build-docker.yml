@@ -20,7 +20,40 @@ jobs:
     - name: docker login
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
 
+    - name: Build Docker image for ${LSWS} with lsphp53
+      if: always()
+      env:
+        PHP: lsphp53
+      run: |
+        docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+    
+    - name: Build Docker image for ${LSWS} with lsphp54
+      if: always()
+      env:
+        PHP: lsphp54
+      run: |
+        docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+
+    - name: Build Docker image for ${LSWS} with lsphp55
+      if: always()
+      env:
+        PHP: lsphp55
+      run: |
+        docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+
+    - name: Build Docker image for ${LSWS} with lsphp56
+      if: always()
+      env:
+        PHP: lsphp56
+      run: |
+        docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP}
+        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+
     - name: Build Docker image for ${LSWS} with lsphp70
+      if: always()
       env:
         PHP: lsphp70
       run: |
@@ -28,6 +61,7 @@ jobs:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
     - name: Build Docker image for ${LSWS} with lsphp71
+      if: always()
       env:
         PHP: lsphp71
       run: |
@@ -35,6 +69,7 @@ jobs:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
     - name: Build Docker image for ${LSWS} with lsphp72
+      if: always()
       env:
         PHP: lsphp72
       run: |
@@ -42,6 +77,7 @@ jobs:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
     - name: Build Docker image for ${LSWS} with lsphp73
+      if: always()
       env:
         PHP: lsphp73
       run: |
@@ -49,6 +85,7 @@ jobs:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
     - name: Build Docker image for ${LSWS} with lsphp74
+      if: always()
       env:
         PHP: lsphp74
       run: |
@@ -56,6 +93,7 @@ jobs:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
     - name: Build Docker image for ${LSWS} with lsphp80
+      if: always()
       env:
         PHP: lsphp80
       run: |
@@ -63,6 +101,7 @@ jobs:
         docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
         
     - name: Build Docker image for ${LSWS} with lsphp81
+      if: always()
       env:
         PHP: lsphp81
       run: |

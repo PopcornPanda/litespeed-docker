@@ -8,7 +8,7 @@ ARG PHP_VERSION='lsphp74'
 ARG LSDIR='/usr/local/lsws'
 
 COPY ./ /app
-RUN ymu install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el7.noarch.rpm \
+RUN yum install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el7.noarch.rpm \
 	https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
 	epel-release -qy \
 	&& yum install curl openssl lsws mysql postgresql13 wget procps which initscripts -yq \
