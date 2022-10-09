@@ -1,7 +1,9 @@
 FROM centos:centos7
 ENV LS_DOMAIN='localhost' \
 	LS_ALIASES='*' \
-	TZ="Europe/Warsaw"
+	TZ="Europe/Warsaw" \
+	LS_UID=1000 \
+	LS_GID=1000
 
 ARG LSWS_VERSION='6.0.12'
 ARG PHP_VERSION='lsphp74'	
