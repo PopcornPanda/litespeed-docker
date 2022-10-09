@@ -15,7 +15,7 @@ RUN yum install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el7.no
 RUN yum install --disablerepo=pgdg15 $PHP_VERSION $PHP_VERSION-common $PHP_VERSION-mysqlnd $PHP_VERSION-opcache $PHP_VERSION-soap $PHP_VERSION-sodium \
     	$PHP_VERSION-curl $PHP_VERSION-imagick $PHP_VERSION-redis $PHP_VERSION-memcached $PHP_VERSION-intl \
 	$PHP_VERSION-json $PHP_VERSION-xml $PHP_VERSION-gd $PHP_VERSION-pgsql $PHP_VERSION-pdo  $PHP_VERSION-bcmath \
-	$PHP_VERSION-zip $PHP_VERSION-imap $PHP_VERSION-ioncube -y --nobest --skip-broken \
+	$PHP_VERSION-zip $PHP_VERSION-imap $PHP_VERSION-ioncube -y --skip-broken \
 	&& echo 'admin:$1$g4eM/m2X$ZZvEWHUtNfBKghPQr/05l0' > ${LSDIR}/admin/conf/htpasswd \
 	&& curl -o ${LSDIR}/conf/trial.key http://license.litespeedtech.com/reseller/trial.key \
 	&& chmod +x /usr/local/lsws/admin/misc/ -R \
