@@ -1,0 +1,68 @@
+name: Build LSWS Docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    env:
+      LSWS: 6.0.12
+
+    runs-on: self-hosted
+
+    steps:
+    - name: Cleaning Operation
+      run : sudo find ${{ github.workspace }}/. -name . -o -prune -exec rm -rf -- {} + || true
+    - uses: actions/checkout@v3
+    - name: docker login
+      run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp70
+      env:
+        PHP: lsphp70
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+    
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp71
+      env:
+        PHP: lsphp71
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+   
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp72
+      env:
+        PHP: lsphp72
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+    
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp73
+      env:
+        PHP: lsphp73
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+    
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp74
+      env:
+        PHP: lsphp74
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+   
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp80
+      env:
+        PHP: lsphp80
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
+
+    - name: Build the Docker image for lsws ${LSWS} witch lsphp81
+      env:
+        PHP: lsphp81
+    - run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} PHP_VERSION=${PHP}
+    - name: Push ${LSWS}-${PHP} to docker hub
+      run: docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${PHP}
