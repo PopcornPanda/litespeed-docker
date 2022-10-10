@@ -125,21 +125,6 @@
     <procSoftLimit>1400</procSoftLimit>
     <procHardLimit>1500</procHardLimit>
   </phpConfig>
-  <railsDefaults>
-    <maxConns>5</maxConns>
-    <env>LSAPI_MAX_IDLE=60</env>
-    <initTimeout>180</initTimeout>
-    <retryTimeout>0</retryTimeout>
-    <pcKeepAliveTimeout>60</pcKeepAliveTimeout>
-    <respBuffer>0</respBuffer>
-    <backlog>50</backlog>
-    <runOnStartUp>1</runOnStartUp>
-    <priority>3</priority>
-    <memSoftLimit>2047M</memSoftLimit>
-    <memHardLimit>2047M</memHardLimit>
-    <procSoftLimit>400</procSoftLimit>
-    <procHardLimit>500</procHardLimit>
-  </railsDefaults>
   <virtualHostList>
   </virtualHostList>
   <listenerList>
@@ -164,7 +149,7 @@
       <listeners>HTTP, HTTPS</listeners>
       <member>
         <vhName>LS_DOMAIN</vhName>
-        <vhDomain>LS_ALIASES</vhDomain>
+        <vhAliases>LS_ALIASES</vhAliases>
       </member>
     </vhTemplate>
   </vhTemplateList>
