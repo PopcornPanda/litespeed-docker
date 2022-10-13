@@ -8,7 +8,7 @@ variables:
 
 lsphp53:
   variables:
-    PHP: 53
+    PHP: lsphp53
     OS: centos7
   stage: build
   image: docker:latest
@@ -20,7 +20,7 @@ lsphp53:
 
 lsphp54:
   variables:
-    PHP: 54
+    PHP: lsphp54
     OS: centos7
   stage: build
   image: docker:latest
@@ -32,7 +32,7 @@ lsphp54:
 
 lsphp55:
   variables:
-    PHP: 55
+    PHP: lsphp55
     OS: centos7
   stage: build
   image: docker:latest
@@ -44,7 +44,7 @@ lsphp55:
 
 lsphp56:
   variables:
-    PHP: 56
+    PHP: lsphp56
     OS: centos7
   stage: build
   image: docker:latest
@@ -56,7 +56,7 @@ lsphp56:
 
 lsphp70:
   variables:
-    PHP: 70
+    PHP: lsphp70
     OS: centos7
   stage: build
   image: docker:latest
@@ -68,7 +68,7 @@ lsphp70:
 
 lsphp71:
   variables:
-    PHP: 71
+    PHP: lsphp71
     OS: centos7
   stage: build
   image: docker:latest
@@ -80,7 +80,7 @@ lsphp71:
 
 lsphp72:
   variables:
-    PHP: 72
+    PHP: lsphp72
     OS: almalinux8
   stage: build
   image: docker:latest
@@ -92,7 +92,7 @@ lsphp72:
 
 lsphp73:
   variables:
-    PHP: 73
+    PHP: lsphp73
     OS: almalinux8
   stage: build
   image: docker:latest
@@ -104,7 +104,7 @@ lsphp73:
 
 lsphp74:
   variables:
-    PHP: 74
+    PHP: lsphp74
     OS: almalinux8
   stage: build
   image: docker:latest
@@ -116,7 +116,7 @@ lsphp74:
 
 lsphp80:
   variables:
-    PHP: 80
+    PHP: lsphp80
     OS: almalinux8
   stage: build
   image: docker:latest
@@ -128,7 +128,7 @@ lsphp80:
 
 lsphp81:
   variables:
-    PHP: 81
+    PHP: lsphp81
     OS: almalinux8
   stage: build
   image: docker:latest
