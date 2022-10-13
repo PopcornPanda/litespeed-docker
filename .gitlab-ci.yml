@@ -4,6 +4,7 @@ services:
 variables:
     LSWS: 6.0.12
     DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay
 
 lsphp53:
   variables:
