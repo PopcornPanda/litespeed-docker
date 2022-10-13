@@ -13,6 +13,8 @@ lsphp53:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp54:
   variables:
@@ -23,6 +25,8 @@ lsphp54:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp55:
   variables:
@@ -33,6 +37,8 @@ lsphp55:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp56:
   variables:
@@ -43,6 +49,8 @@ lsphp56:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp70:
   variables:
@@ -53,6 +61,8 @@ lsphp70:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp71:
   variables:
@@ -63,6 +73,8 @@ lsphp71:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp72:
   variables:
@@ -73,6 +85,8 @@ lsphp72:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp73:
   variables:
@@ -83,6 +97,8 @@ lsphp73:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp74:
   variables:
@@ -93,6 +109,8 @@ lsphp74:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp80:
   variables:
@@ -103,6 +121,8 @@ lsphp80:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
 
 lsphp81:
   variables:
@@ -113,3 +133,5 @@ lsphp81:
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
     - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+  tags:
+    - cllpsd
