@@ -4,6 +4,7 @@ ENV LS_DOMAIN='localhost' \
 	TZ="Europe/Warsaw" \
 	LS_UID=1001 \
 	LS_GID=1001 \
+	LS_USERNAME=app-runner \
 	ADMIN_USER='admin' \
 	ADMIN_PASS='admin123' \
 	MODSEC=1

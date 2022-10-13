@@ -12,7 +12,9 @@
   <autoFix503>1</autoFix503>
   <loadApacheConf>0</loadApacheConf>
   <mime>$SERVER_ROOT/conf/mime.properties</mime>
-  <showVersionNumber>0</showVersionNumber>
+  <showVersionNumber>2</showVersionNumber>
+  <hideSigInErrorPage>1</hideSigInErrorPage>
+  <useIpInProxyHeader>2</useIpInProxyHeader>
   <autoUpdateInterval>86400</autoUpdateInterval>
   <autoUpdateDownloadPkg>1</autoUpdateDownloadPkg>
   <adminEmails>root@localhost</adminEmails>
@@ -109,7 +111,7 @@
       <dir>$SERVER_ROOT/admin/conf/*</dir>
     </accessDenyDir>
     <accessControl>
-      <allow>ALL</allow>
+      <allow>ALL, 103.21.244.0/22T, 103.22.200.0/22T, 103.31.4.0/22T, 104.16.0.0/13T, 104.24.0.0/14T, 108.162.192.0/18T, 131.0.72.0/22T, 141.101.64.0/18T, 162.158.0.0/15T, 172.64.0.0/13T, 173.245.48.0/20T, 188.114.96.0/20T, 190.93.240.0/20T, 197.234.240.0/22T, 198.41.128.0/17T</allow>
     </accessControl>
   </security>
   <phpConfig>

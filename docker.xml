@@ -6,6 +6,8 @@
   <enableScript>1</enableScript>
   <restrained>1</restrained>
   <setUIDMode>2</setUIDMode>
+  <user>LS_USER</user>
+  <group>LS_USER</group>
   <chrootMode>0</chrootMode>
   <virtualHostConfig>
     <docRoot>$VH_ROOT/html/</docRoot>

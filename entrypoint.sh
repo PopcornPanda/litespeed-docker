@@ -16,12 +16,13 @@ chown lsadm:lsadm ${LSDIR}/conf/ -R
 chown lsadm:lsadm ${LSDIR}/admin/conf/ -R
 
 sed -i "s/LS_DOMAIN/${LS_DOMAIN}/;s/LS_ALIASES/${LS_ALIASES}/" ${LSDIR}/conf/httpd_config.xml
-sed -i "s/lsphpver/${PHP_VERSION}/" ${LSDIR}/conf/templates/docker.xml
+sed -i "s/lsphpver/${PHP_VERSION}/;s/LS_USER/${LS_USER}/" ${LSDIR}/conf/templates/docker.xml
+sed -i 's=<enableCoreDump>1</enableCoreDump>=<enableCoreDump>0</enableCoreDump>=' /usr/local/lsws/admin/conf/admin_config.xml
 mkdir -p /var/www/vhosts/${LS_DOMAIN}/{html,logs,certs}
-groupadd -g ${LS_GID} app-runner
-useradd app-runner -u ${LS_UID} -g ${LS_GID} -m -s /usr/sbin/nologin
+groupadd -g ${LS_GID} ${LS_USERNAME}
+useradd ${LS_USERNAME} -u ${LS_UID} -g ${LS_GID} -m -s /usr/sbin/nologin
 chown ${LS_UID}:${LS_GID} /var/www/vhosts/${LS_DOMAIN}/ -R
-echo "${ADMIN_USER}:$(/usr/local/lsws/admin/fcgi-bin/admin_php5 -q /usr/local/lsws/admin/misc/htpasswd.php ${ADMIN_PASS})" /usr/local/lsws/admin/conf/htpasswd
+echo "${ADMIN_USER}:$(/usr/local/lsws/admin/fcgi-bin/admin_php5 -q /usr/local/lsws/admin/misc/htpasswd.php ${ADMIN_PASS})" > /usr/local/lsws/admin/conf/htpasswd
 
 /usr/local/lsws/bin/lswsctrl start
 $@
