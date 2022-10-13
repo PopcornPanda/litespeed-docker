@@ -1,0 +1,115 @@
+services:
+  - docker:dind
+
+variables:
+    LSWS: 6.0.12
+
+lsphp53:
+  variables:
+    PHP: 53
+    OS: centos7
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp54:
+  variables:
+    PHP: 54
+    OS: centos7
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp55:
+  variables:
+    PHP: 55
+    OS: centos7
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp56:
+  variables:
+    PHP: 56
+    OS: centos7
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp70:
+  variables:
+    PHP: 70
+    OS: centos7
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp71:
+  variables:
+    PHP: 71
+    OS: centos7
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp72:
+  variables:
+    PHP: 72
+    OS: almalinux8
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp73:
+  variables:
+    PHP: 73
+    OS: almalinux8
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp74:
+  variables:
+    PHP: 74
+    OS: almalinux8
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp80:
+  variables:
+    PHP: 80
+    OS: almalinux8
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+
+lsphp81:
+  variables:
+    PHP: 81
+    OS: almalinux8
+  stage: build
+  image: docker:latest
+  script:
+    - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
