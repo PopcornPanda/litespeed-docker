@@ -3,6 +3,7 @@ services:
 
 variables:
     LSWS: 6.0.12
+    DOCKER_TLS_CERTDIR: ""
 
 lsphp53:
   variables:
