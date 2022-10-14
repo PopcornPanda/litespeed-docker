@@ -18,15 +18,14 @@ RUN yum install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el7.no
 	https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
 	epel-release -q -y \
 	&& yum install --disablerepo=pgdg15 curl openssl lsws mysql postgresql13 wget procps which initscripts git -y -q \
-	&& yum install --disablerepo=pgdg15 $INTERPRETER \
-	if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then echo $INTERPRETER-* ;fi \
+	&& yum install --disablerepo=pgdg15 $INTERPRETER $(if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then echo $INTERPRETER-* ;fi) \
 	 -y --skip-broken \
 	&& curl -o ${LSDIR}/conf/trial.key http://license.litespeedtech.com/reseller/trial.key \
 	&& chmod +x ${LSDIR}/admin/misc/ -R \
 	&& ${LSDIR}/admin/misc/create_admin_keypair.sh \
 	&& ${LSDIR}/admin/misc/lsup.sh -f -v ${LSWS_VERSION} \
-	if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then \
-	&& ln -sf ${LSDIR}/$INTERPRETER/bin/lsphp $LSDIR/fcgi-bin/lsphp ;fi \
+	$(if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then \
+	echo "&& ln -sf ${LSDIR}/$INTERPRETER/bin/lsphp $LSDIR/fcgi-bin/lsphp" ;fi) \
 	&& ln -fs /app/docker.xml ${LSDIR}/conf/templates/docker.xml \
 	&& ln -fs /app/httpd_config.xml ${LSDIR}/conf/httpd_config.xml \
 	&& if [ $MODSEC -gt 0 ]; then bash /app/modsec.sh -E; else echo 'Skipping ModSecurity'; fi \
