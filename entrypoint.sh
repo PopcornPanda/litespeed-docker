@@ -1,19 +1,31 @@
 #!/bin/bash
 LSDIR='/usr/local/lsws'
 
+if [ ! -z "${LS_SERIAL}" ]; then
+	echo ${LS_SERIAL} > ${LSDIR}/conf/serial.no
+fi
+
 if [ -z "$(ls -A -- "${LSDIR}/conf/")" ]; then
 	cp -R ${LSDIR}/.conf/* ${LSDIR}/conf/
 fi
 if [ -z "$(ls -A -- "${LSDIR}/admin/conf/")" ]; then
 	cp -R ${LSDIR}/admin/.conf/* ${LSDIR}/admin/conf/
 fi
-if [ ! -e ${LSDIR}/conf/serial.no ] && [ ! -e ${LSDIR}/conf/license.key ]; then
+if [ ! -e ${LSDIR}/conf/serial.no ]; then
     rm -f ${LSDIR}/conf/trial.key*
     wget -P ${LSDIR}/conf/ http://license.litespeedtech.com/reseller/trial.key
+else
+	rm -f ${LSDIR}/conf/license.key*
+	${LSDIR}/bin/lshttpd -r
 fi
 
 chown lsadm:lsadm ${LSDIR}/conf/ -R
 chown lsadm:lsadm ${LSDIR}/admin/conf/ -R
+
+if [ ! -z "${CAPTCHA_SITE}" ] && [ ! -z "${CAPTCHA_SECRET}" ]; then
+	CAPTCHA_ENABLED=1
+fi
+sed -i "s/CAPTCHA_ENABLED/${CAPTCHA_ENABLED}/;s/CAPTCHA_SECRET/${CAPTCHA_SECRET}/;s/CAPTCHA_SITE/${CAPTCHA_SITE}/;s/CAPTCHA_LEVEL/${CAPTCHA_LEVEL}/;s/CAPTCHA_TRIES/${CAPTCHA_TRIES}/" ${LSDIR}/conf/templates/docker.xml
 
 sed -i "s/LS_DOMAIN/${LS_DOMAIN}/;s/LS_ALIASES/${LS_ALIASES}/" ${LSDIR}/conf/httpd_config.xml
 sed -i "s/lsphpver/${PHP_VERSION}/;s/LS_USER/${LS_USER}/" ${LSDIR}/conf/templates/docker.xml

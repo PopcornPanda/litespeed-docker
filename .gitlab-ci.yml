@@ -56,10 +56,7 @@ lsphp56:
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} \
-      --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} \
-      --build-arg LSWS_VERSION=${LSWS} 
-      --build-arg INTERPRETER=${INTERPRETER} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
   rules:
