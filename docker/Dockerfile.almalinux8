@@ -24,8 +24,7 @@ RUN dnf install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el8.no
 	&& chmod +x ${LSDIR}/admin/misc/ -R \
 	&& ${LSDIR}/admin/misc/create_admin_keypair.sh \
 	&& ${LSDIR}/admin/misc/lsup.sh -f -v ${LSWS_VERSION} \
-	$(if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then \
-	echo "&& ln -sf ${LSDIR}/$INTERPRETER/bin/lsphp $LSDIR/fcgi-bin/lsphp" ;fi) \
+	&& $(if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then echo "ln -sf ${LSDIR}/$INTERPRETER/bin/lsphp $LSDIR/fcgi-bin/lsphp" ;fi) \
 	&& ln -fs /app/docker.xml ${LSDIR}/conf/templates/docker.xml \
 	&& ln -fs /app/httpd_config.xml ${LSDIR}/conf/httpd_config.xml \
 	&& if [ $MODSEC -gt 0 ]; then bash /app/modsec.sh -E; else echo 'Skipping ModSecurity'; fi \
