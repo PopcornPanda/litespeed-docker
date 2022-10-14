@@ -10,7 +10,7 @@ ENV LS_DOMAIN='localhost' \
 	MODSEC=1
 
 ARG LSWS_VERSION='6.0.12'
-ARG PHP_VERSION='lsphp74'	
+ARG INTERPRETER='lsphp74'	
 ARG LSDIR='/usr/local/lsws'
 
 COPY ./ /app
@@ -18,15 +18,15 @@ RUN dnf install http://rpms.litespeedtech.com/centos/litespeed-repo-1.3-1.el8.no
 	epel-release -q -y \
 	&& dnf module enable postgresql:13 -y -q\
 	&& dnf install curl openssl lsws mysql postgresql wget procps which initscripts git -y -q \
-	&& dnf install $PHP_VERSION $PHP_VERSION-common $PHP_VERSION-mysqlnd $PHP_VERSION-opcache $PHP_VERSION-soap $PHP_VERSION-sodium \
-    $PHP_VERSION-curl $PHP_VERSION-imagick $PHP_VERSION-redis $PHP_VERSION-memcached $PHP_VERSION-intl \
-	$PHP_VERSION-json $PHP_VERSION-xml $PHP_VERSION-gd $PHP_VERSION-pgsql $PHP_VERSION-pdo  $PHP_VERSION-bcmath \
-	$PHP_VERSION-zip $PHP_VERSION-imap $PHP_VERSION-ioncube -y --skip-broken --nobest \
+	&& dnf install --disablerepo=pgdg15 $INTERPRETER \
+	if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then echo $INTERPRETER-* ;fi \
+	 -y --skip-broken --nobest \
 	&& curl -o ${LSDIR}/conf/trial.key http://license.litespeedtech.com/reseller/trial.key \
 	&& chmod +x ${LSDIR}/admin/misc/ -R \
 	&& ${LSDIR}/admin/misc/create_admin_keypair.sh \
 	&& ${LSDIR}/admin/misc/lsup.sh -f -v ${LSWS_VERSION} \
-	&& ln -sf ${LSDIR}/$PHP_VERSION/bin/lsphp $LSDIR/fcgi-bin/lsphp \
+	if [ `echo ${INTERPRETER}|grep ^lsphp -c` -gt 0 ]; then \
+	&& ln -sf ${LSDIR}/$INTERPRETER/bin/lsphp $LSDIR/fcgi-bin/lsphp ;fi \
 	&& ln -fs /app/docker.xml ${LSDIR}/conf/templates/docker.xml \
 	&& ln -fs /app/httpd_config.xml ${LSDIR}/conf/httpd_config.xml \
 	&& if [ $MODSEC -gt 0 ]; then bash /app/modsec.sh -E; else echo 'Skipping ModSecurity'; fi \

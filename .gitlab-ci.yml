@@ -8,132 +8,157 @@ variables:
 
 lsphp53:
   variables:
-    PHP: lsphp53
+    INTERPRETER: lsphp53
     OS: centos7
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp54:
   variables:
-    PHP: lsphp54
+    INTERPRETER: lsphp54
     OS: centos7
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp55:
   variables:
-    PHP: lsphp55
+    INTERPRETER: lsphp55
     OS: centos7
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp56:
   variables:
-    PHP: lsphp56
+    INTERPRETER: lsphp56
     OS: centos7
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} \
+      --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} \
+      --build-arg LSWS_VERSION=${LSWS} 
+      --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp70:
   variables:
-    PHP: lsphp70
+    INTERPRETER: lsphp70
     OS: centos7
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH  
 
 lsphp71:
   variables:
-    PHP: lsphp71
+    INTERPRETER: lsphp71
     OS: centos7
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp72:
   variables:
-    PHP: lsphp72
+    INTERPRETER: lsphp72
     OS: almalinux8
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp73:
   variables:
-    PHP: lsphp73
+    INTERPRETER: lsphp73
     OS: almalinux8
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp74:
   variables:
-    PHP: lsphp74
+    INTERPRETER: lsphp74
     OS: almalinux8
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp80:
   variables:
-    PHP: lsphp80
+    INTERPRETER: lsphp80
     OS: almalinux8
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 lsphp81:
   variables:
-    PHP: lsphp81
+    INTERPRETER: lsphp81
     OS: almalinux8
   stage: build
   image: docker:latest
   script:
     - docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${PHP} --build-arg LSWS_VERSION=${LSWS} --build-arg PHP_VERSION=${PHP} --push
+    - docker buildx build . --file docker/Dockerfile.${OS} --tag ${DOCKER_USER}/${DOCKER_REPO}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
   tags:
     - cllpsd
+  rules:
+    if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
