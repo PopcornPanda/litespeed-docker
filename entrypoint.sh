@@ -33,7 +33,7 @@ sed -i 's=<enableCoreDump>1</enableCoreDump>=<enableCoreDump>0</enableCoreDump>=
 mkdir -p /var/www/vhosts/${LS_DOMAIN}/{html,logs,certs}
 groupadd -g ${LS_GID} ${LS_USERNAME}
 useradd ${LS_USERNAME} -u ${LS_UID} -g ${LS_GID} -m -s /usr/sbin/nologin
-chown ${LS_UID}:${LS_GID} /var/www/vhosts/${LS_DOMAIN}/ -R
+chown ${LS_USERNAME}:${LS_USERNAME} /var/www/vhosts/${LS_DOMAIN}/ -R
 echo "${ADMIN_USER}:$(/usr/local/lsws/admin/fcgi-bin/admin_php5 -q /usr/local/lsws/admin/misc/htpasswd.php ${ADMIN_PASS})" > /usr/local/lsws/admin/conf/htpasswd
 
 /usr/local/lsws/bin/lswsctrl start
