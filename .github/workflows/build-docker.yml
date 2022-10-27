@@ -207,6 +207,6 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker buildx buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
+        docker buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
 
  
