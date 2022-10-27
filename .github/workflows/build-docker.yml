@@ -11,7 +11,7 @@ jobs:
   lsphp53:      
     runs-on: self-hosted
     env:
-        PHP: lsphp53
+        INTERPRETER: lsphp53
 
     steps:
     - name: Cleaning Operation
@@ -25,13 +25,12 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
 
   lsphp54:
     runs-on: self-hosted
     env:
-        PHP: lsphp54
+        INTERPRETER: lsphp54
 
     steps:
     - name: Cleaning Operation
@@ -45,13 +44,12 @@ jobs:
 
     - name: Build Docker image  
       run: |
-        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
 
   lsphp55:      
     runs-on: self-hosted
     env:
-        PHP: lsphp55
+        INTERPRETER: lsphp55
 
     steps:
     - name: Cleaning Operation
@@ -65,13 +63,12 @@ jobs:
 
     - name: Build Docker image   
       run: |
-        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
 
   lsphp56:      
     runs-on: self-hosted
     env:
-        PHP: lsphp56
+        INTERPRETER: lsphp56
 
     steps:
     - name: Cleaning Operation
@@ -84,13 +81,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
 
   lsphp70:      
     runs-on: self-hosted
     env:
-        PHP: lsphp70
+        INTERPRETER: lsphp70
 
     steps:
     - name: Cleaning Operation
@@ -103,13 +99,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
-        
+        docker buildx build . --file docker/Dockerfile.centos7 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
+      
   lsphp71:      
     runs-on: self-hosted
     env:
-        PHP: lsphp71
+        INTERPRETER: lsphp71
 
     steps:
     - name: Cleaning Operation
@@ -122,13 +117,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
-        
+        docker buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
+       
   lsphp72:      
     runs-on: self-hosted
     env:
-        PHP: lsphp72
+        INTERPRETER: lsphp72
 
     steps:
     - name: Cleaning Operation
@@ -141,13 +135,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
-        
+        docker buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
+      
   lsphp73:      
     runs-on: self-hosted
     env:
-        PHP: lsphp73
+        INTERPRETER: lsphp73
 
     steps:
     - name: Cleaning Operation
@@ -160,13 +153,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
-        
+        docker buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
+  
   lsphp74:      
     runs-on: self-hosted
     env:
-        PHP: lsphp74
+        INTERPRETER: lsphp74
 
     steps:
     - name: Cleaning Operation
@@ -179,13 +171,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
         
   lsphp80:      
     runs-on: self-hosted
     env:
-        PHP: lsphp80
+        INTERPRETER: lsphp80
 
     steps:
     - name: Cleaning Operation
@@ -198,13 +189,12 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
         
   lsphp81:      
     runs-on: self-hosted
     env:
-        PHP: lsphp81
+        INTERPRETER: lsphp81
 
     steps:
     - name: Cleaning Operation
@@ -217,7 +207,6 @@ jobs:
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
       run: |
-        docker build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER}
-        docker push ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER}
+        docker buildx buildx build . --file docker/Dockerfile.almalinux8 --tag ${{secrets.DOCKER_USER}}/${{secrets.DOCKER_REPO}}:${LSWS}-${INTERPRETER} --build-arg LSWS_VERSION=${LSWS} --build-arg INTERPRETER=${INTERPRETER} --push
 
  
